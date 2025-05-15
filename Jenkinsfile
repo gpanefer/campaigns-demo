@@ -27,12 +27,12 @@ pipeline {
         }
         stage('build image') {
           steps {
-            sh 'docker build -t <nombre de usuario>/campaign-demo:v1 --label campaign-demo-server .'
+            sh 'docker build -t gpanefer92/campaign-demo:v1 --label campaign-demo-server .'
           }
         }
         stage('run container') {
           steps {
-            sh 'docker run -d --name campaign-demo-server --label campaign-demo-server -p 5000:5000 jogucha/campaign-demo:v1'
+            sh 'docker run -d --name campaign-demo-server --label campaign-demo-server -p 5000:5000 gpanefer92/campaign-demo:v1'
           }
         }
     }
