@@ -22,17 +22,17 @@ pipeline {
         }
         stage('cleanup') {
           steps {
-            sh 'sudo docker system prune -a --volumes --force --filter "label=campaign-demo-server"'
+            sh 'docker system prune -a --volumes --force --filter "label=campaign-demo-server"'
           }
         }
         stage('build image') {
           steps {
-            sh 'sudo docker build -t gpanefer92/campaign-demo:v1 --label campaign-demo-server .'
+            sh 'docker build -t gpanefer92/campaign-demo:v1 --label campaign-demo-server .'
           }
         }
         stage('run container') {
           steps {
-            sh 'sudo docker run -d --name campaign-demo-server --label campaign-demo-server -p 5000:5000 gpanefer92/campaign-demo:v1'
+            sh 'docker run -d --name campaign-demo-server --label campaign-demo-server -p 5000:5000 gpanefer92/campaign-demo:v1'
           }
         }
     }
